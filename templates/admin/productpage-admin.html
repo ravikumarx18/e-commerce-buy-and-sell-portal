@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>eCommerce</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+        <!-- <link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.ico"> -->
+        
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css')}}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css')}}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css')}}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css')}}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/themify-icons.css')}}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css')}}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css')}}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+   </head>
+<body>
+           <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{{ url_for('static', filename='img/logo/logo.png')}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+<header>
+       <div class="header-area">
+            <div class="main-header ">
+                <div class="header-top top-bg d-none d-lg-block">
+                   <div class="container-fluid">
+                       <div class="col-xl-12">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="header-info-left d-flex">
+                                    <div class="flag">
+                                    </div>
+                                    <ul class="contact-now">
+                                        <li>+91-9876543210</li>
+                                    </ul>
+                                </div>
+                                <div class="header-info-right">
+                                    <ul>
+                                        <li><a href="{{ url_for('logout') }}">Logout({{session['username']}})</a></li>
+                                        <li><a href="{{ url_for('usersadmin') }}">Users</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                       </div>
+                   </div>
+                </div>
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+                                <div class="logo">
+                                  <a href="#"><img src="{{ url_for('static', filename='img/logo/logo.png')}}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="#">All Products</a></li>
+                                              <li><a href="{{ url_for('newProduct') }}">New Products</a></li>
+                                              <li><a href="{{ url_for('vendorList') }}">Vendor List</a></li>
+                                              <li><a href="{{ url_for('ordersforadmin') }}">Orders</a></li>
+                                              
+                                          </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                          <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+<!-- slider Area Start-->
+<div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center" data-background="{{ url_for('static', filename='img/hero/category.jpg')}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>product Details</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- slider Area End-->
+
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <div class="product_img_slide owl-carousel">
+        <div class="single_product_img">
+          <img src="{{ url_for('static', filename='img/categori/'+singleproduct[5]+'/'+ singleproduct[0]|string +'.png')}}" alt="#" class="img-fluid">
+        </div>
+        <div class="single_product_img">
+          <img src="{{ url_for('static', filename='img/categori/'+singleproduct[5]+'/'+ singleproduct[0]|string +'.png')}}" alt="#" class="img-fluid">
+        </div>
+        <div class="single_product_img">
+          <img src="{{ url_for('static', filename='img/categori/'+singleproduct[5]+'/'+ singleproduct[0]|string +'.png')}}" alt="#" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="single_product_text text-center">
+        <h3>{{singleproduct[1]}} <br><br></h3>
+          <h4>Selling Price: {{productlist[4]}} INR</h4>
+          <br>
+        
+          <h4>Current Stock: {{productlist[6]}}</h4>
+        <p>
+            Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness. Credibly innovate granular internal or organic sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas. with optimal networks.
+        </p>
+        <br><br>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!--================End Single Product Area =================-->
+<footer>
+    <!-- Footer Start-->
+        <div class="footer-area footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+                       <div class="single-footer-caption mb-50">
+                         <div class="single-footer-caption mb-30">
+                              <!-- logo -->
+                             <div class="footer-logo">
+                                 <a href="#"><img src="{{ url_for('static', filename='img/logo/logo2_footer.png')}}" alt=""></a>
+                             </div>
+                             <div class="footer-tittle">
+                                 <div class="footer-pera">
+                                     <p>The one stop online destination</p>
+                                </div>
+                             </div>
+                         </div>
+                       </div>
+                    </div>
+                </footer>
+                <script src="{{url_for('static',filename='js/vendor/modernizr-3.5.0.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/popper.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/jquery.slicknav.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/owl.carousel.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/slick.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/wow.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/animated.headline.js')}}"></script>
+                <script src="{{url_for('static',filename='js/jquery.magnific-popup.js')}}"></script>
+                <script src="{{url_for('static',filename='js/jquery.scrollUp.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/jquery.nice-select.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/jquery.sticky.js')}}"></script>
+                <script src="{{url_for('static',filename='js/contact.js')}}"></script>
+                <script src="{{url_for('static',filename='js/jquery.form.js')}}"></script>
+                <script src="{{url_for('static',filename='js/jquery.validate.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/mail-script.js')}}"></script>
+                <script src="{{url_for('static',filename='js/jquery.ajaxchimp.min.js')}}"></script>
+                <script src="{{url_for('static',filename='js/plugins.js')}}"></script>
+                <script src="{{url_for('static',filename='js/main.js')}}"></script>
+                    </body>
+ </html>
+ 

@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>eCommerce website </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+
+<body>
+    <header>
+        <!-- Header Start -->
+       <div class="header-area">
+            <div class="main-header ">
+                <div class="header-top top-bg d-none d-lg-block">
+                   <div class="container-fluid">
+                       <div class="col-xl-12">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="header-info-left d-flex">
+                                    <div class="select-this">
+                                        <form action="#">
+                                            <div class="select-itms">
+                                                <select name="select" id="select1">
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <ul class="contact-now">
+                                        <li>+91-1234567890</li>
+                                    </ul>
+                                </div>
+                                <div class="header-info-right">
+                                   <ul>
+                                    <li><a href="{{ url_for('logout') }}">Logout({{session['username']}})</a></li>
+                                    <li><a href="{{ url_for('usersadmin') }}">Users</a></li>
+                                </ul>
+                                </div>
+                            </div>
+                       </div>
+                   </div>
+                </div>
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+                                <div class="logo">
+                                  <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo/logo.png')}}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-7 col-lg-8 col-md-7 col-sm-5">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="#">All Products</a></li>
+                                              <li><a href="{{ url_for('newProduct') }}">New Products</a></li>
+                                              <li><a href="{{ url_for('vendorList') }}">Vendor List</a></li>
+                                              <li><a href="{{ url_for('ordersforadmin') }}">Orders</a></li>
+                                          </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                          
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+
+
+    <!-- slider Area Start-->
+    <div class="slider-area ">
+        <!-- Mobile Menu -->
+        <div class="single-slider slider-height2 d-flex align-items-center" data-background="{{ url_for('static', filename='img/hero/category.jpg')}}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Requested Product List</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- slider Area End-->
+
+    <!--================login_part Area =================-->
+    <div class="section-top-border">
+        
+        <div class="progress-table-wrap">
+            <div class="progress-table">
+                <div class="table-head">
+                    <div class="serial">Request ID</div>
+                    <div class="serial">Vendor ID</div>
+                    <div class="country">Product name</div>
+                    <div class="serial">Category</div>
+                    <div class="serial">Details</div>
+                </div>
+                {%for pros in tempproducts%}
+                <div class="table-row">
+                    <div class="serial">{{pros[0]}}</div>
+                    <div class="serial">{{pros[1]}}</div>
+                    <div class="country">{{pros[2]}}</div>
+                    <div class="serial">{{pros[6]}}</div>
+                    <form action="{{url_for('verifyProduct', req_id=pros[0])}}" method="GET">
+                    <div class="add_to_cart">
+                        <input type="submit"  name ="btn1" value="View" class="genric-btn info radius"/>
+                    </div>
+                    </form>
+                </div>
+                {%endfor%}
+                
+            </div>
+        </div>
+    </div>
+    
+    <!--================login_part end =================-->
+
+    <footer>
+        <!-- Footer Start-->
+            <div class="footer-area footer-padding">
+                <div class="container">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+                           <div class="single-footer-caption mb-50">
+                             <div class="single-footer-caption mb-30">
+                                  <!-- logo -->
+                                 <div class="footer-logo">
+                                     <a href="index.html"><img src="{{ url_for('static', filename='img/logo/logo2_footer.png')}}" alt=""></a>
+                                 </div>
+                                 <div class="footer-tittle">
+                                     <div class="footer-pera">
+                                         <p>The one stop online destination</p>
+                                    </div>
+                                 </div>
+                             </div>
+                           </div>
+                        </div>
+     </footer>
+
+<!-- JS here -->
+
+<script src="{{url_for('static',filename='js/vendor/modernizr-3.5.0.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/popper.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/jquery.slicknav.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/owl.carousel.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/slick.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/wow.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/animated.headline.js')}}"></script>
+<script src="{{url_for('static',filename='js/jquery.magnific-popup.js')}}"></script>
+<script src="{{url_for('static',filename='js/jquery.scrollUp.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/jquery.nice-select.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/jquery.sticky.js')}}"></script>
+<script src="{{url_for('static',filename='js/contact.js')}}"></script>
+<script src="{{url_for('static',filename='js/jquery.form.js')}}"></script>
+<script src="{{url_for('static',filename='js/jquery.validate.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/mail-script.js')}}"></script>
+<script src="{{url_for('static',filename='js/jquery.ajaxchimp.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/plugins.js')}}"></script>
+<script src="{{url_for('static',filename='js/main.js')}}"></script>
+
+</body>
+
+</html>

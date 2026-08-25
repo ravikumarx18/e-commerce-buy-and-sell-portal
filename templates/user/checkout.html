@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>eCommerce</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+		<!-- <link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.ico"> -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/themify-icons.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+   </head>
+<body>
+           <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{{ url_for('static', filename='img/logo/logo.png')}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+<header>
+       <div class="header-area">
+            <div class="main-header ">
+                <div class="header-top top-bg d-none d-lg-block">
+                   <div class="container-fluid">
+                       <div class="col-xl-12">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="header-info-left d-flex">
+                                    <div class="flag">
+                                    </div>
+                                    <ul class="contact-now">
+                                        <li>+91-9876543210</li>
+                                    </ul>
+                                </div>
+                                <div class="header-info-right">
+                                   <ul>
+                                    <li><a href="{{ url_for('logout') }}">Logout({{ session['username'] }})</a></li>
+                                    <li><a href="{{ url_for('cart') }}">Cart</a></li>
+                                   </ul>
+                                </div>
+                            </div>
+                       </div>
+                   </div>
+                </div>
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+                                <div class="logo">
+                                  <a href="#"><img src="{{ url_for('static', filename='img/logo/logo.png')}}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-7 col-lg-8 col-md-10 col-sm-5">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="{{url_for('home')}}">Home</a></li>
+                                            <li><a href="{{ url_for('catagories') }}">Catagories</a></li>
+                                            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                                            <li><a href="{{ url_for('order')}}">My Orders</a></li>      
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                          <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+
+  <!-- slider Area Start-->
+  <div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center" data-background="{{ url_for('static', filename='img/hero/category.jpg')}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Checkout</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- slider Area End-->
+
+  <!--================Checkout Area =================-->
+  <section class="checkout_area section_padding">
+    <div class="container">
+     
+      <form class="row contact_form" action="#" method="POST" novalidate="novalidate">
+      <div class="billing_details">
+        <div class="row">
+          <div class="col-lg-8">
+            <h3>Billing Details</h3>
+            <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+              
+              <div class="col-md-6 form-group p_star">
+                <input type="text" class="form-control" id="first" name="first" placeholder="First name" value=""/>
+               
+                <!-- <span class="placeholder" data-placeholder="First name"></span> -->
+              </div>
+              <div class="col-md-6 form-group p_star">
+                <input type="text" class="form-control" id="last" name="last" placeholder="Last Name" value=""/>
+                
+                <!-- <span class="placeholder" data-placeholder="Last name"></span> -->
+              </div>
+              
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="company" name="company" placeholder="Company name" value = "" />
+              </div>
+              
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="number" name="number" placeholder="Phone number" value = "" />
+                
+                <!-- <span class="placeholder" data-placeholder="Phone number"></span> -->
+              
+              </div>
+                <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" value = "" />
+                
+                <!-- <span class="placeholder" data-placeholder="Email Address"></span> -->
+              </div>
+              <div class="col-md-12 form-group">
+                <div class="creat_account">
+                  <br>
+                  <h3>Shipping Details</h3>
+                </div>
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="add1" name="add1" placeholder="Address line 01" value = ""/>
+                
+                <!-- <span class="placeholder" data-placeholder="Address line 01"></span> -->
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="add2" name="add2" placeholder="Address line 02" value = ""/>
+             
+                <!-- <span class="placeholder" data-placeholder="Address line 02"></span> -->
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="city" name="city" placeholder="Town/City" value = ""/>
+               
+                <!-- <span class="placeholder" data-placeholder="Town/City"></span> -->
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="district" name="district" placeholder="District" value = ""/>
+                
+                <!-- <span class="placeholder" data-placeholder="district"></span> -->
+              </div>
+              
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="zip" name="Postcode" placeholder="Postcode/ZIP" value = "" />
+             
+              </div>
+              
+              <div class="col-md-12 form-group">
+                <textarea class="form-control" name="message" id="message" rows="1"
+                  placeholder="Order Notes" value = ""></textarea>
+              </div>
+            </form>
+          </div>
+
+
+
+          <div class="col-lg-4">
+            <div class="order_box">
+              <h2>Your Order</h2>
+              <ul class="list">
+                <li>
+                  <a href="#">Product
+                    <span>Total</span>
+                  </a>
+                </li>
+                {% for item in carts %}
+                <li>
+                  <a href="#">{{item['proname']}}
+                    <span class="middle">x {{item['quantity']}}</span>
+                    <span class="last">{{item['totalprice']}} INR</span>
+                  </a>
+                </li>
+                {% endfor %}
+                
+              </ul>
+              <ul class="list list_2">
+               
+                <li>
+                  <a href="#">Total
+                    <span>{{totalprice}} INR</span>
+                  </a>
+                </li>
+              </ul>
+              <div class="payment_item">
+                <div class="radion_btn">
+                  <input type="radio" id="f-option5" name="selector" value = "checkpayment" />
+                  <label for="f-option5">Check payments</label>
+                  <div class="check"></div>
+                </div>
+                <p>
+                  Please send a check to Store Name, Store Street, Store Town,
+                  Store State / County, Store Postcode.
+                </p>
+              </div>
+              <div class="payment_item active">
+                <div class="radion_btn">
+                  <input type="radio" id="f-option6" name="selector" value = "paypal" />
+                  <label for="f-option6">Paypal </label>
+                  <img src="{{url_for('static',filename='img/product/single-product/card.jpg')}}" alt="" />
+                  <div class="check"></div>
+                </div>
+                <p>
+                  Please send a check to Store Name, Store Street, Store Town,
+                  Store State / County, Store Postcode.
+                </p>
+              </div>
+              <div class="payment_item active">
+                <div class="radion_btn">
+                  <input type="radio" id="f-option7" name="selector" value = "cash" />
+                  <label for="f-option7">cash </label>
+                  <img src="{{url_for('static',filename='img/product/single-product/card.jpg')}}" alt="" />
+                  <div class="check"></div>
+                </div>
+                <p>
+                  Please send a check to Store Name, Store Street, Store Town,
+                  Store State / County, Store Postcode.
+                </p>
+              </div>
+              <div class="creat_account">
+                <input type="checkbox" id="f-option4" name="tandc" />
+                <label for="f-option4" value = "done">I’ve read and accept the </label>
+                <a href="#">terms & conditions*</a>
+              </div>
+              <button type="submit" value="submit" class="btn_3 col-lg-12">
+                Proceed 
+            </button>
+            <!-- <a class="btn_3" href="#">Proceed</a> -->
+
+              {% with messages10 = get_flashed_messages() %}
+                                    {% if messages10 %}
+                                        <ul class=flashes>
+                                        {% for message in messages10 %}
+                                        <li>{{ message }}</li>
+                                        {% endfor %}
+                                        </ul>
+                                    {% endif %}
+              {% endwith %}
+            </div>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+  </section>
+  <!--================End Checkout Area =================-->
+
+  <!--================End Cart Area =================-->
+
+<!-- JS here -->
+        <script src="{{url_for('static',filename='js/vendor/modernizr-3.5.0.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/popper.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/jquery.slicknav.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/owl.carousel.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/slick.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/wow.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/animated.headline.js')}}"></script>
+        <script src="{{url_for('static',filename='js/jquery.magnific-popup.js')}}"></script>
+        <script src="{{url_for('static',filename='js/jquery.scrollUp.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/jquery.nice-select.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/jquery.sticky.js')}}"></script>
+        <script src="{{url_for('static',filename='js/contact.js')}}"></script>
+        <script src="{{url_for('static',filename='js/jquery.form.js')}}"></script>
+        <script src="{{url_for('static',filename='js/jquery.validate.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/mail-script.js')}}"></script>
+        <script src="{{url_for('static',filename='js/jquery.ajaxchimp.min.js')}}"></script>
+        <script src="{{url_for('static',filename='js/plugins.js')}}"></script>
+        <script src="{{url_for('static',filename='js/main.js')}}"></script>
+ 
+
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>eCommerce website </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    
+
+    <!-- CSS here -->
+        <link rel="stylesheet" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="static/css/flaticon.css">
+        <link rel="stylesheet" href="static/css/slicknav.css">
+        <link rel="stylesheet" href="static/css/animate.min.css">
+        <link rel="stylesheet" href="static/css/magnific-popup.css">
+        <link rel="stylesheet" href="static/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="static/css/themify-icons.css">
+        <link rel="stylesheet" href="static/css/slick.css">
+        <link rel="stylesheet" href="static/css/nice-select.css">
+        <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <!-- Header Start -->
+       <div class="header-area">
+            <div class="main-header ">
+                <div class="header-top top-bg d-none d-lg-block">
+                   <div class="container-fluid">
+                       <div class="col-xl-12">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="header-info-left d-flex">
+                                    <div class="select-this">
+                                        <form action="#">
+                                            <div class="select-itms">
+                                                <select name="select" id="select1">
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <ul class="contact-now">
+                                        <li>+91-1234567890</li>
+                                    </ul>
+                                </div>
+                                <div class="header-info-right">
+                                   <ul>
+                                    <li><a href="{{ url_for('logout') }}">Logout({{session['username']}})</a></li>
+                                        <li><a href="{{ url_for('cart') }}">Cart</a></li>
+                                   </ul>
+                                </div>
+                            </div>
+                       </div>
+                   </div>
+                </div>
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+                                <div class="logo">
+                                  <a href="{{ url_for('home') }}"><img src="static/img/logo/logo.png" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="{{ url_for('home') }}">Home</a></li>
+                                            <li><a href="{{ url_for('catagories') }}">Catagories</a></li>
+                                            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                                            <li><a href="{{ url_for('order')}}">My Orders  </a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                          
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+
+    <!-- slider Area Start-->
+    <div class="slider-area ">
+        <!-- Mobile Menu -->
+        <div class="single-slider slider-height2 d-flex align-items-center" data-background="static/img/hero/category.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Your Orders</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- slider Area End-->
+
+    <!--================login_part Area =================-->
+    <div class="section-top-border">
+        <div class="progress-table-wrap">
+            <div class="progress-table">
+                <div class="table-head">
+                    <div class="serial"> Order_ID </div>
+                    <div class="serial">Product</div>
+                    <div class="serial">Quantity</div>
+                    <div class="serial">Price</div>
+                    <div class="serial">Status</div>
+                    <div class="serial">Date</div>
+                    <div class="serial">Review</div>
+                </div>
+                {%for order in orders%}
+                <div class="table-row">
+                    <div class="serial">{{order['id']}}</div>
+                    <div class="serial">{{order['pname']}}</div>
+                    <div class="serial">{{order['quantity']}}</div>
+                    <div class="serial">{{order['quantity']*order['price']}}</div>
+                    <div class="serial">{{order['status']}}</div>
+                    <div class="serial">{{order['date']}} </div>
+                    {%if order['status']=='Delivered'%}
+                    <form action=" {{url_for('review',proid=order['pid'])}}" method="GET">
+                        <div class="serial">
+                            <input type="submit"  name ="btn1" value="Review Product" class="genric-btn info radius"/>
+                        </div>
+                </form>
+                {%else%}
+                <form action="#" method="GET">
+                    <div class="serial">
+                        <input type="submit"  name ="btn1" value="Review Product" class="genric-btn info radius"/>
+                    </div>
+               </form>
+               {%endif%}
+                </div>   
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    <!--================login_part end =================-->
+
+    <footer>
+        <!-- Footer Start-->
+            <div class="footer-area footer-padding">
+                <div class="container">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+                           <div class="single-footer-caption mb-50">
+                             <div class="single-footer-caption mb-30">
+                                  <!-- logo -->
+                                 <div class="footer-logo">
+                                     <a href="index.html"><img src="static/img/logo/logo2_footer.png" alt=""></a>
+                                 </div>
+                                 <div class="footer-tittle">
+                                     <div class="footer-pera">
+                                         <p>The one stop online destination</p>
+                                    </div>
+                                 </div>
+                             </div>
+                           </div>
+                        </div>
+     </footer>
+
+<!-- JS here -->
+
+    <!-- All JS Custom Plugins Link Here here -->
+    <script src="./static/js/vendor/modernizr-3.5.0.min.js"></script>
+
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="./static/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="./static/js/popper.min.js"></script>
+    <script src="./static/js/bootstrap.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="./static/js/jquery.slicknav.min.js"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="./static/js/owl.carousel.min.js"></script>
+    <script src="./static/js/slick.min.js"></script>
+
+    <!-- One Page, Animated-HeadLin -->
+    <script src="./static/js/wow.min.js"></script>
+    <script src="./static/js/animated.headline.js"></script>
+
+    <!-- Scrollup, nice-select, sticky -->
+    <script src="./static/js/jquery.scrollUp.min.js"></script>
+    <script src="./static/js/jquery.nice-select.min.js"></script>
+    <script src="./static/js/jquery.sticky.js"></script>
+    <script src="./static/js/jquery.magnific-popup.js"></script>
+
+    <!-- contact js -->
+    <script src="./static/js/contact.js"></script>
+    <script src="./static/js/jquery.form.js"></script>
+    <script src="./static/js/jquery.validate.min.js"></script>
+    <script src="./static/js/mail-script.js"></script>
+    <script src="./static/js/jquery.ajaxchimp.min.js"></script>
+
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="./static/js/plugins.js"></script>
+    <script src="./static/js/main.js"></script>
+
+</body>
+
+</html>
